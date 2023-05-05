@@ -60,7 +60,7 @@ class page2 extends StatelessWidget {
             image: DecorationImage(
                 image: AssetImage("assets/images/background.png"),
                 fit: BoxFit.cover),
-            shape: BoxShape.circle, 
+            shape: BoxShape.circle,
           ),
           child: Image.asset(
             "assets/images/Vector.png",
@@ -98,7 +98,10 @@ class page2 extends StatelessWidget {
             const SizedBox(height: 150),
             Row(children: [
               TextButton(
-                  onPressed: () => print("Hello"),
+                  onPressed: () {
+                    // Navigate to the second screen using a named route.
+                    Navigator.pushNamed(context, '/wallet');
+                  },
                   child: const Text("PASSER",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,

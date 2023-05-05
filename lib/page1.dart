@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nft_app/wallet.dart';
 
 class page1 extends StatelessWidget {
   const page1({
@@ -41,7 +42,13 @@ class page1 extends StatelessWidget {
             const SizedBox(height: 34),
             Row(children: [
               TextButton(
-                  onPressed: () => print("Hello"),
+                  onPressed: () => {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => Wallet(title: "TOTOTHUNE"),
+                          ),
+                        ),
+                      },
                   child: const Text("PASSER",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,

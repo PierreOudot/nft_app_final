@@ -1,10 +1,46 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:nft_app/page1.dart';
-import 'package:nft_app/page2.dart';
-import 'package:nft_app/page3.dart';
+import 'package:nft_app/OnboardingPager.dart';
+import 'package:nft_app/wallet.dart';
+import 'package:go_router/go_router.dart';
 
 void main() => runApp(const MyApp());
+
+final GoRouter _router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return Wallet(title: "");
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'details',
+          builder: (BuildContext context, GoRouterState state) {
+            return const DetailsScreen();
+          },
+        ),
+      ],
+    ),
+  ],
+);
+
+class AppWrapper extends StatefulWidget {
+  AppWrapper({Key? key}) : super(key: key);
+
+  @override
+  State<AppWrapper> createState() => _AppWrapperState();
+}
+
+class _AppWrapperState extends State<AppWrapper> {
+  bool skipOnboarding = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      routerConfig: _router,
+    );
+  }
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,36 +54,9 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: const OnboardingPager(),
       ),
-    );
-  }
-}
-
-class OnboardingPager extends StatelessWidget {
-  const OnboardingPager({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final PageController controller = PageController();
-    return ScrollConfiguration(
-      behavior: ScrollConfiguration.of(context).copyWith(
-        dragDevices: {
-          PointerDeviceKind.touch,
-          PointerDeviceKind.mouse,
-        },
-      ),
-      child: Container(
-        color: const Color.fromARGB(255, 240, 239, 235),
-        child: PageView(
-          controller: controller,
-          children: <Widget>[
-            Center(child: page1()),
-            Center(child: page2()),
-            Center(
-              child: page3(),
-            ),
-          ],
-        ),
-      ),
+      routes: {
+        '/wallet': (context) => Wallet(title: ""),
+      },
     );
   }
 }
