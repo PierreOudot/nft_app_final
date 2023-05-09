@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nft_app/MarketPlace.dart';
 import 'package:nft_app/Onboarding/OnboardingPager.dart';
 import 'package:nft_app/Onboarding/page1.dart';
 import 'package:nft_app/Onboarding/page2.dart';
@@ -13,7 +14,7 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return _AppWrapperState().skipOnboarding ? MyApp() : Wallet(title: "");
+        return _AppWrapperState().skipOnboarding ? MyApp() : MarketPlace();
       },
       routes: <RouteBase>[
         GoRoute(
@@ -53,7 +54,7 @@ class AppWrapper extends StatefulWidget {
 }
 
 class _AppWrapperState extends State<AppWrapper> {
-  bool skipOnboarding = true;
+  bool skipOnboarding = false;
 
   @override
   Widget build(BuildContext context) {

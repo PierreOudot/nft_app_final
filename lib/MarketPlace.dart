@@ -14,9 +14,10 @@ class _MarketPlaceState extends State<MarketPlace> {
   late Future<List<Character>> _characterList;
 
   @override
-  void initstate() {
+  void initState() {
     super.initState();
-    _characterList = Request_Handler().getCharacters();
+    Request_Handler rh = new Request_Handler();
+    _characterList = rh.getCharacters();
   }
 
   @override
@@ -26,7 +27,7 @@ class _MarketPlaceState extends State<MarketPlace> {
       future: _characterList,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          final characterList = snapshot.data;
+          final characterList = snapshot.data!;
           return Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -34,7 +35,14 @@ class _MarketPlaceState extends State<MarketPlace> {
                 child: ListView.builder(
                   scrollDirection: Axis.vertical,
                   itemCount: characterList.length,
-                  itemBuilder: (BuildContext context, int index) {},
+                  itemBuilder: (BuildContext context, int index) {
+                    final character = characterList[index];
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 0.33,
+                      child: Text(character.name),
+                    );
+                  },
                 ),
               ),
             ],

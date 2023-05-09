@@ -4,7 +4,8 @@
 
 import 'dart:convert';
 
-List<Character> characterFromJson(String str) =>
+List<Character> characterFromJson(
+        String str) => //virer string -> map string, dynamique
     List<Character>.from(json.decode(str).map((x) => Character.fromJson(x)));
 
 String characterToJson(List<Character> data) =>
