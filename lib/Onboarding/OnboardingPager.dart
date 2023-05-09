@@ -1,9 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:nft_app/page1.dart';
-import 'package:nft_app/page2.dart';
-import 'package:nft_app/page3.dart';
+import 'package:nft_app/Onboarding/page1.dart';
+import 'package:nft_app/Onboarding/page2.dart';
+import 'package:nft_app/Onboarding/page3.dart';
 
 class OnboardingPager extends StatelessWidget {
   const OnboardingPager({super.key});

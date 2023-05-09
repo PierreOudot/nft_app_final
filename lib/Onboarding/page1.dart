@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nft_app/main.dart';
 import 'package:nft_app/wallet.dart';
 
 class page1 extends StatelessWidget {
@@ -55,7 +56,7 @@ class page1 extends StatelessWidget {
                           color: Color(0xFF65635E)))),
               const Spacer(),
               MaterialButton(
-                onPressed: () => print("hello"),
+                onPressed: () => print("TOTO"),
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(35))),
                 textColor: Colors.white,

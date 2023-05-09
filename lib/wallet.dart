@@ -71,7 +71,7 @@ class _WalletState extends State<Wallet> {
         // the App.build method, and use it to set our appbar title.
 
         title: Text("Argent facile NFT"),
-        backgroundColor: Color.fromRGBO(98, 0, 238, 1.0),
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       drawer: Drawer(
         backgroundColor: Color.fromRGBO(98, 0, 238, 1.0),
