@@ -3,9 +3,9 @@
 //     final character = characterFromJson(jsonString);
 
 import 'dart:convert';
+import 'dart:math';
 
-List<Character> characterFromJson(
-        String str) => //virer string -> map string, dynamique
+List<Character> characterFromJson(String str) =>
     List<Character>.from(json.decode(str).map((x) => Character.fromJson(x)));
 
 String characterToJson(List<Character> data) =>
@@ -20,40 +20,44 @@ class Character {
   String gender;
   Location origin;
   Location location;
-  Uri image;
+  String image;
   List<String> episode;
   Uri url;
   DateTime created;
+  int rarity;
+  double price;
 
-  Character({
-    required this.id,
-    required this.name,
-    required this.status,
-    required this.species,
-    required this.type,
-    required this.gender,
-    required this.origin,
-    required this.location,
-    required this.image,
-    required this.episode,
-    required this.url,
-    required this.created,
-  });
+  Character(
+      {required this.id,
+      required this.name,
+      required this.status,
+      required this.species,
+      required this.type,
+      required this.gender,
+      required this.origin,
+      required this.location,
+      required this.image,
+      required this.episode,
+      required this.url,
+      required this.created,
+      required this.rarity,
+      required this.price});
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(
-        id: json["id"],
-        name: json["name"],
-        status: json["status"],
-        species: json["species"],
-        type: json["type"],
-        gender: json["gender"],
-        origin: Location.fromJson(json["origin"]),
-        location: Location.fromJson(json["location"]),
-        image: Uri.parse(json["image"]),
-        episode: List<String>.from(json["episode"].map((x) => x)),
-        url: Uri.parse(json["url"]),
-        created: DateTime.parse(json["created"]),
-      );
+      id: json["id"],
+      name: json["name"],
+      status: json["status"],
+      species: json["species"],
+      type: json["type"],
+      gender: json["gender"],
+      origin: Location.fromJson(json["origin"]),
+      location: Location.fromJson(json["location"]),
+      image: json["image"],
+      episode: List<String>.from(json["episode"].map((x) => x)),
+      url: Uri.parse(json["url"]),
+      created: DateTime.parse(json["created"]),
+      rarity: Random().nextInt(4),
+      price: Random().nextDouble() * 0.500);
 
   Map<String, dynamic> toJson() => {
         "id": id,
@@ -68,7 +72,20 @@ class Character {
         "episode": List<dynamic>.from(episode.map((x) => x)),
         "url": url,
         "created": created.toIso8601String(),
+        "rarity": rarity
       };
+
+  void setRarity() {
+    List<int> rarityValues = [
+      1,
+      2,
+      3,
+    ];
+    Random random = Random();
+    int index = random.nextInt(4);
+
+    rarity = rarityValues[index];
+  }
 }
 
 class Location {

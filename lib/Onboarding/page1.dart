@@ -3,6 +3,7 @@ import 'package:nft_app/main.dart';
 import 'package:nft_app/wallet.dart';
 
 class page1 extends StatelessWidget {
+  
   const page1({
     super.key,
   });
