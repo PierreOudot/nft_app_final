@@ -73,9 +73,7 @@ class _WalletState extends State<Wallet> {
         title: Text(""),
         backgroundColor: Theme.of(context).primaryColor,
       ),
-      drawer: Drawer(
-        backgroundColor: Color.fromRGBO(98, 0, 238, 1.0),
-      ),
+
       body: Column(mainAxisSize: MainAxisSize.max, children: [
         Padding(
           padding: EdgeInsets.all(20),

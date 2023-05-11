@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nft_app/rickmortyNFT/Character.dart';
 import 'package:nft_app/rickmortyNFT/Request_Handler.dart';
 import 'package:nft_app/rickmortyNFT/characterCard.widget.dart';
@@ -31,6 +31,18 @@ class _MarketPlaceState extends State<MarketPlace> {
           )),
       drawer: Drawer(
         backgroundColor: Color.fromRGBO(98, 0, 238, 1.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+                onPressed: () => GoRouter.of(context).push('/wallet'),
+                icon: Icon(
+                  Icons.wallet_rounded,
+                  color: Color.fromRGBO(3, 218, 197, 1.0),
+                  size: 24,
+                ))
+          ],
+        ),
       ),
       body: FutureBuilder(
         future: _characterList,
